@@ -30,8 +30,8 @@ const HALAL_ITEMS = [
 const SCENES = [
   { href: '/destinations/kyoto',   img: '/images/areas/kyoto-fushimi.jpg',   name: 'Kyoto',    jp: '京都',   span: 'col-span-5 row-span-2' },
   { href: '/destinations/tokyo',   img: '/images/areas/tokyo-shibuya.jpg',   name: 'Tokyo',    jp: '東京',   span: 'col-span-4 row-span-1' },
-  { href: '/destinations/hakone',  img: '/images/areas/hakone-fuji.jpg',     name: 'Hakone',   jp: '箱根',   span: 'col-span-3 row-span-1' },
-  { href: '/destinations/hokkaido',img: '/images/areas/hokkaido-niseko.jpg', name: 'Hokkaido', jp: '北海道', span: 'col-span-4 row-span-1' },
+  { href: '/destinations/hakone',  img: '/images/areas/hakone-ropeway.jpg',   name: 'Hakone',   jp: '箱根',   span: 'col-span-3 row-span-1' },
+  { href: '/destinations/hokkaido',img: '/images/areas/hokkaido-lavender.jpg',name: 'Hokkaido', jp: '北海道', span: 'col-span-4 row-span-1' },
   { href: '/destinations/okinawa', img: '/images/areas/okinawa-beach.jpg',   name: 'Okinawa',  jp: '沖縄',   span: 'col-span-3 row-span-1' },
 ]
 
@@ -171,8 +171,8 @@ export default function HomePage() {
               { slug: 'tokyo',    name: 'Tokyo',    jp: '東京',  img: '/images/destinations/tokyo.jpg' },
               { slug: 'kyoto',   name: 'Kyoto',    jp: '京都',  img: '/images/destinations/kyoto.jpg' },
               { slug: 'osaka',   name: 'Osaka',    jp: '大阪',  img: '/images/destinations/osaka.jpg' },
-              { slug: 'hakone',  name: 'Hakone',   jp: '箱根',  img: '/images/destinations/hakone.jpg' },
-              { slug: 'hokkaido',name: 'Hokkaido', jp: '北海道',img: '/images/destinations/hokkaido.jpg' },
+              { slug: 'hakone',  name: 'Hakone',   jp: '箱根',  img: '/images/areas/hakone-ropeway.jpg' },
+              { slug: 'hokkaido',name: 'Hokkaido', jp: '北海道',img: '/images/areas/hokkaido-lavender.jpg' },
               { slug: 'okinawa', name: 'Okinawa',  jp: '沖縄',  img: '/images/destinations/okinawa.jpg' },
             ].map((dest) => (
               <Link
