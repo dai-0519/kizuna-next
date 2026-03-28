@@ -16,6 +16,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const isHome = pathname === '/'
+  const isAr = pathname.startsWith('/ar')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -67,6 +68,17 @@ export default function Nav() {
             </li>
           </ul>
 
+          {/* Language toggle (desktop) */}
+          <div className="hidden lg:flex items-center gap-3">
+            <div className={`w-px h-4 ${isLight ? 'bg-black/20' : 'bg-white/20'}`} />
+            <Link
+              href={isAr ? '/' : '/ar'}
+              className={`text-[10px] tracking-[0.14em] font-medium border border-current/30 px-3 py-1.5 transition-colors duration-200 ${linkColor}`}
+            >
+              {isAr ? 'EN' : 'AR'}
+            </Link>
+          </div>
+
           {/* Hamburger */}
           <button
             className="lg:hidden flex flex-col gap-[5px] cursor-pointer bg-none border-none p-1"
@@ -88,7 +100,7 @@ export default function Nav() {
         >
           ✕
         </button>
-        {[...links, { href: '/#contact', label: 'Contact' }].map((l) => (
+        {[...links, { href: '/#contact', label: 'Contact' }, { href: isAr ? '/' : '/ar', label: isAr ? 'English' : 'عربي' }].map((l) => (
           <Link
             key={l.href}
             href={l.href}

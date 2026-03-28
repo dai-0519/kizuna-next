@@ -4,11 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const SLIDES = [
-  { src: '/images/hero_sakura.jpg',  location: 'Kyoto', jp: '京都',   caption: 'Cherry blossoms in full bloom' },
-  { src: '/images/hero_torii.jpg',   location: 'Fushimi Inari', jp: '伏見稲荷', caption: 'Ten thousand vermillion gates' },
-  { src: '/images/hero_fuji_a.jpg',  location: 'Hakone', jp: '箱根',  caption: 'Mount Fuji at first light' },
-  { src: '/images/hero_pagoda.jpg',  location: 'Kyoto', jp: '京都',   caption: 'Ancient temples, timeless beauty' },
-  { src: '/images/hero_shrine.jpg',  location: 'Japan', jp: '日本',   caption: 'Sacred spaces and living traditions' },
+  { src: '/images/hero_sakura.jpg',     location: 'Kyoto', jp: '京都',   caption: 'Cherry blossoms in full bloom',    pos: 'center center' },
+  { src: '/images/hero_torii.jpg',      location: 'Fushimi Inari', jp: '伏見稲荷', caption: 'Ten thousand vermillion gates', pos: 'center center' },
+  { src: '/images/hero_fuji_new.jpg',   location: 'Hakone', jp: '箱根',  caption: 'Mount Fuji at first light',        pos: 'center 40%' },
+  { src: '/images/hero_pagoda_new.jpg', location: 'Kyoto', jp: '京都',   caption: 'Ancient temples, timeless beauty', pos: 'center center' },
+  { src: '/images/hero_shrine_new.jpg', location: 'Japan', jp: '日本',   caption: 'Sacred spaces and living traditions', pos: 'center center' },
 ]
 
 const WA = 'https://wa.me/971509509781?text=Hello%2C%20I%27m%20a%20travel%20agent%20and%20I%27d%20like%20to%20enquire%20about%20Japan%20programs.'
@@ -34,7 +34,8 @@ export default function HeroCarousel() {
             alt={slide.caption}
             fill
             priority={i === 0}
-            className="object-cover object-center"
+            className="object-cover"
+            style={{ objectPosition: slide.pos }}
           />
         </div>
       ))}

@@ -391,6 +391,49 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── TESTIMONIALS ─────────────────────────────────── */}
+      <section className="py-32 bg-off-white">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <div className="mb-12">
+            <div className="text-[10px] font-semibold tracking-[0.18em] uppercase text-gold mb-4">What Agencies Say</div>
+            <h2 className="font-fraunces text-4xl md:text-5xl font-light text-navy leading-[1.05]">
+              Trusted by agencies<br />across the Middle East.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                quote: "KIZUNA Journey turned our Japan inquiries from a headache into a smooth process. The 24-hour proposal guarantee is real — they always come back within the day. Halal verification is solid.",
+                name: "Mohammed Al-Hamdan",
+                title: "Managing Director",
+                agency: "Desert Rose Travel, Dubai, UAE",
+              },
+              {
+                quote: "We've worked with Japan operators before, but none understood what our Saudi clients need. KIZUNA handles halal, prayer, and family logistics without us having to explain everything from scratch.",
+                name: "Tariq Al-Ghamdi",
+                title: "Senior Travel Consultant",
+                agency: "Al Majd Tourism, Riyadh, KSA",
+              },
+              {
+                quote: "The B2B-only model matters to us. We know KIZUNA won't undercut us by selling directly to travelers. That trust is rare in this industry.",
+                name: "Fatima Al-Rashidi",
+                title: "Director of International Tours",
+                agency: "Pearl of the Gulf Travel, Kuwait City",
+              },
+            ].map((t) => (
+              <div key={t.name} className="bg-white border border-black/5 p-8">
+                <div className="font-fraunces text-5xl text-gold/20 leading-none mb-4">&ldquo;</div>
+                <p className="text-[13px] text-muted leading-7 mb-6">{t.quote}</p>
+                <div className="border-t border-black/5 pt-6">
+                  <div className="text-[13px] font-semibold text-navy">{t.name}</div>
+                  <div className="text-[11px] text-muted/70 tracking-wide">{t.title}, {t.agency}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── PHOTO FEATURE ────────────────────────────────── */}
       <section className="relative h-[70vh] overflow-hidden">
         <Image
@@ -503,6 +546,53 @@ export default function HomePage() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TEAM ──────────────────────────────────────────── */}
+      <section className="py-24 bg-off-white">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <div className="mb-12">
+            <div className="text-[10px] font-semibold tracking-[0.18em] uppercase text-gold mb-4">Our Team</div>
+            <h2 className="font-fraunces text-4xl md:text-5xl font-light text-navy leading-[1.05]">
+              The people behind<br />KIZUNA Journey.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Ryoma Takeuchi */}
+            <div className="bg-white p-8 border border-black/5">
+              <div className="aspect-square overflow-hidden mb-6">
+                <Image
+                  src="/images/ceo-ryoma.jpg"
+                  alt="Ryoma Takeuchi"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="text-[15px] font-semibold text-navy mb-1">Ryoma Takeuchi</div>
+              <div className="text-[11px] tracking-[0.1em] uppercase text-gold mb-4">CEO &amp; Founder</div>
+              <p className="text-[13px] text-muted leading-7">Born and raised in Japan. Built KIZUNA Journey from Dubai to bridge the gap between Middle Eastern travel agencies and authentic Japanese experiences.</p>
+            </div>
+            {/* Tensho Suzuki */}
+            <div className="bg-white p-8 border border-black/5">
+              <div className="aspect-square overflow-hidden mb-6 bg-navy/10 flex items-center justify-center">
+                <span className="font-fraunces text-4xl font-light text-navy/40">TS</span>
+              </div>
+              <div className="text-[15px] font-semibold text-navy mb-1">Tensho Suzuki</div>
+              <div className="text-[11px] tracking-[0.1em] uppercase text-gold mb-4">Chief Operations Officer</div>
+              <p className="text-[13px] text-muted leading-7">Born in Hong Kong, moved to Kyoto at 14. Extensive background in luxury product trading with deep Japan expertise.</p>
+            </div>
+            {/* Hideaki Shigemitsu */}
+            <div className="bg-white p-8 border border-black/5">
+              <div className="aspect-square overflow-hidden mb-6 bg-navy/10 flex items-center justify-center">
+                <span className="font-fraunces text-4xl font-light text-navy/40">HS</span>
+              </div>
+              <div className="text-[15px] font-semibold text-navy mb-1">Hideaki Shigemitsu</div>
+              <div className="text-[11px] tracking-[0.1em] uppercase text-gold mb-4">Head of Marketing</div>
+              <p className="text-[13px] text-muted leading-7">Built and sold his own company between 18–21. Brings marketing and sales experience across Japan and international markets.</p>
             </div>
           </div>
         </div>
