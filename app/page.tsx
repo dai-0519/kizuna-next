@@ -28,11 +28,11 @@ const HALAL_ITEMS = [
 
 // Japan scene grid data
 const SCENES = [
-  { href: '/destinations/kyoto',   img: '/images/areas/kyoto-fushimi.jpg',   name: 'Kyoto',    jp: '京都',   span: 'col-span-5 row-span-2' },
-  { href: '/destinations/tokyo',   img: '/images/areas/tokyo-shibuya.jpg',   name: 'Tokyo',    jp: '東京',   span: 'col-span-4 row-span-1' },
-  { href: '/destinations/hakone',  img: '/images/areas/hakone-torii.jpg',     name: 'Hakone',   jp: '箱根',   span: 'col-span-3 row-span-1' },
-  { href: '/destinations/hokkaido',img: '/images/areas/hokkaido-lavender.jpg',name: 'Hokkaido', jp: '北海道', span: 'col-span-4 row-span-1' },
-  { href: '/destinations/okinawa', img: '/images/areas/okinawa-beach.jpg',   name: 'Okinawa',  jp: '沖縄',   span: 'col-span-3 row-span-1' },
+  { href: '/destinations/kyoto',   img: '/images/areas/kyoto-fushimi.jpg',   name: 'Kyoto',    jp: '京都',   span: 'col-span-5 row-span-2', tagline: '1,000 temples and a silent morning' },
+  { href: '/destinations/tokyo',   img: '/images/areas/tokyo-shibuya.jpg',   name: 'Tokyo',    jp: '東京',   span: 'col-span-4 row-span-1', tagline: 'Where ancient ritual meets neon nights' },
+  { href: '/destinations/hakone',  img: '/images/areas/hakone-torii.jpg',     name: 'Hakone',   jp: '箱根',   span: 'col-span-3 row-span-1', tagline: 'Fuji at first light, from your onsen' },
+  { href: '/destinations/hokkaido',img: '/images/areas/hokkaido-new.jpg',     name: 'Hokkaido', jp: '北海道', span: 'col-span-4 row-span-1', tagline: 'A horizon of white, as far as the eye can see' },
+  { href: '/destinations/okinawa', img: '/images/areas/okinawa-beach.jpg',   name: 'Okinawa',  jp: '沖縄',   span: 'col-span-3 row-span-1', tagline: 'Emerald waters and a summer that never ends' },
 ]
 
 export default function HomePage() {
@@ -102,7 +102,8 @@ export default function HomePage() {
               <div className="absolute bottom-0 left-0 p-5 md:p-6">
                 <div className="font-fraunces text-lg md:text-2xl font-light italic text-white leading-tight">{scene.name}</div>
                 <div className="font-jp text-white/35 text-xs md:text-sm mt-0.5">{scene.jp}</div>
-                <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <p className="text-[11px] text-white/65 leading-5 mb-2 max-w-[180px]">{scene.tagline}</p>
                   <span className="text-[9px] tracking-[0.2em] uppercase text-gold border-b border-gold/50 pb-0.5">Explore →</span>
                 </div>
               </div>
@@ -172,7 +173,7 @@ export default function HomePage() {
               { slug: 'kyoto',   name: 'Kyoto',    jp: '京都',  img: '/images/destinations/kyoto.jpg' },
               { slug: 'osaka',   name: 'Osaka',    jp: '大阪',  img: '/images/destinations/osaka.jpg' },
               { slug: 'hakone',  name: 'Hakone',   jp: '箱根',  img: '/images/areas/hakone-torii.jpg' },
-              { slug: 'hokkaido',name: 'Hokkaido', jp: '北海道',img: '/images/areas/hokkaido-lavender.jpg' },
+              { slug: 'hokkaido',name: 'Hokkaido', jp: '北海道',img: '/images/areas/hokkaido-new.jpg' },
               { slug: 'okinawa', name: 'Okinawa',  jp: '沖縄',  img: '/images/destinations/okinawa.jpg' },
             ].map((dest) => (
               <Link
@@ -262,10 +263,10 @@ export default function HomePage() {
         <div className="max-w-[1200px] mx-auto px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/8">
             {[
-              { value: '500+', label: 'Verified Halal Restaurants', sub: 'Across all 6 destinations' },
-              { value: '24h',  label: 'Proposal Guarantee', sub: 'UAE business day response' },
-              { value: '100%', label: 'B2B Only', sub: 'Never sell direct to consumers' },
-              { value: '6',    label: 'Core Destinations', sub: 'Deep local supplier network' },
+              { value: '500+', label: 'Verified Halal Restaurants', sub: 'So your clients eat well, every night' },
+              { value: '24h',  label: 'Proposal Guarantee', sub: 'You wake up to a ready-to-send itinerary' },
+              { value: '100%', label: 'B2B Only', sub: 'Your clients stay yours. Always.' },
+              { value: '6',    label: 'Core Destinations', sub: 'From Okinawa beaches to Hokkaido powder' },
             ].map((stat) => (
               <div key={stat.value} className="py-10 px-8 text-center first:pl-0 last:pr-0">
                 <div className="font-fraunces text-4xl md:text-5xl font-light text-gold mb-1 leading-none">{stat.value}</div>
@@ -287,15 +288,19 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-[3px] px-8 max-w-[1400px] mx-auto" style={{ height: '55vh', minHeight: '380px' }}>
           {[
-            { season: 'Spring', jp: '春', icon: '🌸', img: '/images/season-spring.jpg', slug: 'spring', en: 'Cherry blossoms & Hanami picnics' },
-            { season: 'Summer', jp: '夏', icon: '🌊', img: '/images/season-summer.jpg', slug: 'summer', en: 'Okinawa beaches & Summer festivals' },
-            { season: 'Autumn', jp: '秋', icon: '🍁', img: '/images/season-autumn.jpg', slug: 'autumn', en: 'Red maple season — Kyoto & Nikko' },
-            { season: 'Winter', jp: '冬', icon: '❄️', img: '/images/season-winter.jpg', slug: 'winter', en: 'Powder snow & hot springs' },
+            { season: 'Spring', jp: '春', icon: '🌸', img: '/images/season-spring-new.jpg', slug: 'spring', en: 'Cherry blossoms & Hanami picnics', accent: '#F9C6D0' },
+            { season: 'Summer', jp: '夏', icon: '🌊', img: '/images/season-summer-new.jpg', slug: 'summer', en: 'Okinawa beaches & Summer festivals', accent: '#4CAF82' },
+            { season: 'Autumn', jp: '秋', icon: '🍁', img: '/images/season-autumn-new.jpg', slug: 'autumn', en: 'Red maple season — Kyoto & Nikko', accent: '#E8823A' },
+            { season: 'Winter', jp: '冬', icon: '❄️', img: '/images/season-winter-new.jpg', slug: 'winter', en: 'Powder snow & hot springs', accent: '#7BB8D4' },
           ].map((s) => (
             <Link key={s.season} href={`/seasons/${s.slug}`} className="relative overflow-hidden group block">
               <Image src={s.img} alt={s.season} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-500" />
+              {/* Season color tint on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500" style={{ backgroundColor: s.accent }} />
+              {/* Season color bottom accent bar */}
+              <div className="absolute bottom-0 left-0 w-full h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" style={{ backgroundColor: s.accent }} />
               <div className="absolute bottom-0 left-0 p-5 w-full">
                 <div className="text-2xl mb-2">{s.icon}</div>
                 <div className="font-fraunces text-xl font-light italic text-white">{s.season}</div>
