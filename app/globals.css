@@ -29,13 +29,8 @@
     color: #0A0A0A;
     background: #fff;
     -webkit-font-smoothing: antialiased;
+    font-variation-settings: "WONK" 0;
   }
-}
-
-/* Disable Fraunces "WONK" axis — prevents distorted capital J */
-.font-fraunces,
-[class*="font-fraunces"] {
-  font-variation-settings: "WONK" 0 !important;
 }
 
 /* Ticker */
