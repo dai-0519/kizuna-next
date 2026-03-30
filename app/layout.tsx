@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
-import { Fraunces, Inter } from 'next/font/google'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
 import PageTransition from '@/components/PageTransition'
 
-const fraunces = Fraunces({
+const fraunces = Cormorant_Garamond({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  axes: ['WONK'],
   variable: '--font-fraunces-var',
   display: 'swap',
 })
