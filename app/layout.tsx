@@ -4,6 +4,7 @@ import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
+import PageTransition from '@/components/PageTransition'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -21,22 +22,54 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'KIZUNA Journey — Japan Travel B2B Partner for Middle East Agencies',
-  description: 'Dubai-based Japan travel specialist for travel agencies in the UAE and Middle East. Halal-friendly, B2B only, UAE timezone response.',
+  metadataBase: new URL('https://kizuna-next.vercel.app'),
+  title: 'KIZUNA Journey — Japan Travel Specialist for UAE Travel Agents',
+  description: 'Dubai-based Japan travel specialist for B2B. Halal-certified itineraries, 24-hour quotes, UAE timezone support. The only Japan-only operator in the UAE.',
+  keywords: ['Japan travel agent UAE', 'halal Japan tour', 'B2B Japan travel', 'Dubai Japan specialist', 'Middle East Japan travel', 'halal Japan itinerary'],
   openGraph: {
-    title: 'KIZUNA Journey — Japan Travel B2B Partner',
-    description: 'Dubai-based. UAE time zone. Japan-only B2B partner for travel agencies across the Middle East.',
+    title: 'KIZUNA Journey — Your Private Gateway to Japan',
+    description: 'B2B Japan travel specialist based in Dubai. Halal expertise. 24-hour turnaround. UAE timezone.',
+    url: 'https://kizuna-next.vercel.app',
+    siteName: 'KIZUNA Journey',
+    locale: 'en_US',
     type: 'website',
-    images: ['/images/hero_sakura.jpg'],
+    images: [{ url: '/images/hero_sakura.jpg', width: 1200, height: 630, alt: 'KIZUNA Journey — Japan Travel' }],
   },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TravelAgency',
+  name: 'KIZUNA Journey FZCO',
+  description: 'Dubai-based Japan travel specialist for travel agencies in the UAE and Middle East. B2B only.',
+  url: 'https://kizuna-next.vercel.app',
+  telephone: '+971509509781',
+  email: 'ryoma@kizuna-journey.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Shop 38, Wasl Vita Mall, Jumeirah 1',
+    addressLocality: 'Dubai',
+    addressCountry: 'AE',
+  },
+  areaServed: ['AE', 'SA', 'KW', 'QA', 'BH', 'OM'],
+  knowsLanguage: ['en', 'ar'],
+  priceRange: '$$',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         <Nav />
-        <main>{children}</main>
+        <PageTransition>
+          <main>{children}</main>
+        </PageTransition>
         <Footer />
         <WhatsAppFloat />
       </body>

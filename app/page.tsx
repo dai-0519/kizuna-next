@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import LeadForm from '@/components/LeadForm'
 import HeroCarousel from '@/components/HeroCarousel'
+import ScrollReveal from '@/components/ScrollReveal'
+import StatsCounter from '@/components/StatsCounter'
 
 const WA = 'https://wa.me/971509509781?text=Hello%2C%20I%27m%20a%20travel%20agent%20and%20I%27d%20like%20to%20enquire%20about%20Japan%20programs.'
 
@@ -28,11 +30,11 @@ const HALAL_ITEMS = [
 
 // Japan scene grid data
 const SCENES = [
-  { href: '/destinations/kyoto',   img: '/images/areas/kyoto-fushimi.jpg',   name: 'Kyoto',    jp: '京都',   span: 'col-span-5 row-span-2', tagline: '1,000 temples and a silent morning' },
-  { href: '/destinations/tokyo',   img: '/images/areas/tokyo-shibuya.jpg',   name: 'Tokyo',    jp: '東京',   span: 'col-span-4 row-span-1', tagline: 'Where ancient ritual meets neon nights' },
-  { href: '/destinations/hakone',  img: '/images/areas/hakone-torii.jpg',     name: 'Hakone',   jp: '箱根',   span: 'col-span-3 row-span-1', tagline: 'Fuji at first light, from your onsen' },
-  { href: '/destinations/hokkaido',img: '/images/areas/hokkaido-new.jpg',     name: 'Hokkaido', jp: '北海道', span: 'col-span-4 row-span-1', tagline: 'A horizon of white, as far as the eye can see' },
-  { href: '/destinations/okinawa', img: '/images/areas/okinawa-beach.jpg',   name: 'Okinawa',  jp: '沖縄',   span: 'col-span-3 row-span-1', tagline: 'Emerald waters and a summer that never ends' },
+  { href: '/destinations/kyoto',   img: '/images/areas/kyoto-fushimi.jpg',   name: 'Kyoto',    jp: '京都',   span: 'col-span-2 md:col-span-5 md:row-span-2', tagline: '1,000 temples and a silent morning' },
+  { href: '/destinations/tokyo',   img: '/images/areas/tokyo-shibuya.jpg',   name: 'Tokyo',    jp: '東京',   span: 'col-span-1 md:col-span-4', tagline: 'Where ancient ritual meets neon nights' },
+  { href: '/destinations/hakone',  img: '/images/areas/hakone-torii.jpg',     name: 'Hakone',   jp: '箱根',   span: 'col-span-1 md:col-span-3', tagline: 'Fuji at first light, from your onsen' },
+  { href: '/destinations/hokkaido',img: '/images/areas/hokkaido-new.jpg',     name: 'Hokkaido', jp: '北海道', span: 'col-span-1 md:col-span-4', tagline: 'A horizon of white, as far as the eye can see' },
+  { href: '/destinations/okinawa', img: '/images/areas/okinawa-beach.jpg',   name: 'Okinawa',  jp: '沖縄',   span: 'col-span-1 md:col-span-3', tagline: 'Emerald waters and a summer that never ends' },
 ]
 
 export default function HomePage() {
@@ -84,12 +86,12 @@ export default function HomePage() {
         </div>
 
         {/* Editorial photo grid */}
-        <div className="grid grid-cols-12 grid-rows-2 gap-[3px] px-8 pb-8 max-w-[1400px] mx-auto" style={{ height: '75vh', minHeight: '500px' }}>
+        <div className="grid grid-cols-2 gap-[3px] px-8 pb-8 max-w-[1400px] mx-auto md:grid-cols-12 md:grid-rows-2 md:h-[75vh] md:min-h-[500px]">
           {SCENES.map((scene) => (
             <Link
               key={scene.name}
               href={scene.href}
-              className={`${scene.span} relative overflow-hidden group block`}
+              className={`${scene.span} relative overflow-hidden group block aspect-[4/3] md:aspect-auto`}
             >
               <Image
                 src={scene.img}
@@ -132,8 +134,9 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="flex flex-col divide-y divide-black/5">
-              {WHY_ITEMS.map((item) => (
-                <div key={item.n} className="flex gap-6 py-8">
+              {WHY_ITEMS.map((item, i) => (
+                <ScrollReveal key={item.n} delay={i * 0.1}>
+                <div className="flex gap-6 py-8">
                   <span className="font-fraunces text-4xl font-light text-gold/25 leading-none w-10 shrink-0">{item.n}</span>
                   <div className="flex-1 min-w-0">
                     <div className="text-[13px] font-semibold text-navy mb-2 tracking-wide">{item.title}</div>
@@ -145,6 +148,7 @@ export default function HomePage() {
                     </span>
                   </div>
                 </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -179,7 +183,7 @@ export default function HomePage() {
               <Link
                 key={dest.slug}
                 href={`/destinations/${dest.slug}`}
-                className="group relative aspect-[3/4] overflow-hidden bg-navy block"
+                className="group relative aspect-[4/3] md:aspect-[3/4] overflow-hidden bg-navy block"
               >
                 <Image
                   src={dest.img}
@@ -268,11 +272,7 @@ export default function HomePage() {
               { value: '100%', label: 'B2B Only', sub: 'Your clients stay yours. Always.' },
               { value: '6',    label: 'Core Destinations', sub: 'From Okinawa beaches to Hokkaido powder' },
             ].map((stat) => (
-              <div key={stat.value} className="py-10 px-8 text-center first:pl-0 last:pr-0">
-                <div className="font-fraunces text-4xl md:text-5xl font-light text-gold mb-1 leading-none">{stat.value}</div>
-                <div className="text-[12px] font-semibold text-white tracking-wide mb-1">{stat.label}</div>
-                <div className="text-[11px] text-white/35 tracking-wide">{stat.sub}</div>
-              </div>
+              <StatsCounter key={stat.value} value={stat.value} label={stat.label} sub={stat.sub} />
             ))}
           </div>
         </div>
@@ -330,8 +330,9 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-[1px] bg-white/5">
-            {STEPS.map((step) => (
-              <div key={step.n} className="relative bg-navy-dark p-10">
+            {STEPS.map((step, i) => (
+              <ScrollReveal key={step.n} delay={i * 0.12} direction="left">
+              <div className="relative bg-navy-dark p-10 h-full">
                 <div className="font-fraunces text-[80px] font-light text-white/4 leading-none absolute top-6 right-8 select-none">
                   {step.n}
                 </div>
@@ -351,6 +352,7 @@ export default function HomePage() {
                   </div>
                 )}
               </div>
+              </ScrollReveal>
             ))}
           </div>
           <div className="mt-6 p-6 border-l-2 border-gold bg-white/3 max-w-xl">
@@ -385,12 +387,14 @@ export default function HomePage() {
               { icon: '✈', title: 'Fully Customized Private Tours', text: 'End-to-end private itineraries built around your clients\' interests. Hotels, transport, experiences, guides — confirmed before departure.' },
               { icon: '🕌', title: 'Halal-Friendly & Family Tours', text: 'Itineraries built for Muslim travelers and families. Halal-certified dining at every meal, prayer arrangements, gender-separated onsen.' },
               { icon: '🏢', title: 'Corporate & MICE', text: 'Incentive travel, team retreats, and business events in Japan. Venue sourcing, group logistics, and on-ground support.' },
-            ].map((svc) => (
-              <div key={svc.title} className="border border-black/6 p-8 hover:border-gold/30 transition-colors duration-300">
-                <div className="text-2xl mb-5">{svc.icon}</div>
-                <h3 className="text-[14px] font-semibold text-navy mb-3 leading-snug">{svc.title}</h3>
-                <p className="text-[13px] text-muted leading-7">{svc.text}</p>
-              </div>
+            ].map((svc, i) => (
+              <ScrollReveal key={svc.title} delay={i * 0.1}>
+                <div className="border border-black/6 p-8 hover:border-gold/30 transition-colors duration-300 h-full">
+                  <div className="text-2xl mb-5">{svc.icon}</div>
+                  <h3 className="text-[14px] font-semibold text-navy mb-3 leading-snug">{svc.title}</h3>
+                  <p className="text-[13px] text-muted leading-7">{svc.text}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -425,15 +429,17 @@ export default function HomePage() {
                 title: "Director of International Tours",
                 agency: "Pearl of the Gulf Travel, Kuwait City",
               },
-            ].map((t) => (
-              <div key={t.name} className="bg-white border border-black/5 p-8">
-                <div className="font-fraunces text-5xl text-gold/20 leading-none mb-4">&ldquo;</div>
-                <p className="text-[13px] text-muted leading-7 mb-6">{t.quote}</p>
-                <div className="border-t border-black/5 pt-6">
-                  <div className="text-[13px] font-semibold text-navy">{t.name}</div>
-                  <div className="text-[11px] text-muted/70 tracking-wide">{t.title}, {t.agency}</div>
+            ].map((t, i) => (
+              <ScrollReveal key={t.name} delay={i * 0.1}>
+                <div className="bg-white border border-black/5 p-8 h-full">
+                  <div className="font-fraunces text-5xl text-gold/20 leading-none mb-4">&ldquo;</div>
+                  <p className="text-[13px] text-muted leading-7 mb-6">{t.quote}</p>
+                  <div className="border-t border-black/5 pt-6">
+                    <div className="text-[13px] font-semibold text-navy">{t.name}</div>
+                    <div className="text-[11px] text-muted/70 tracking-wide">{t.title}, {t.agency}</div>
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
