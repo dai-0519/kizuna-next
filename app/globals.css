@@ -30,10 +30,12 @@
     background: #fff;
     -webkit-font-smoothing: antialiased;
   }
-  /* Disable Fraunces "WONK" axis — prevents distorted capital J */
-  .font-fraunces, [class*="font-fraunces"] {
-    font-variation-settings: "WONK" 0;
-  }
+}
+
+/* Disable Fraunces "WONK" axis — prevents distorted capital J */
+.font-fraunces,
+[class*="font-fraunces"] {
+  font-variation-settings: "WONK" 0 !important;
 }
 
 /* Ticker */
