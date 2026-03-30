@@ -30,6 +30,10 @@
     background: #fff;
     -webkit-font-smoothing: antialiased;
   }
+  /* Disable Fraunces "WONK" axis — prevents distorted capital J */
+  .font-fraunces, [class*="font-fraunces"] {
+    font-variation-settings: "WONK" 0;
+  }
 }
 
 /* Ticker */
@@ -39,6 +43,12 @@
 }
 .animate-ticker { animation: ticker 34s linear infinite; }
 .animate-ticker:hover { animation-play-state: paused; }
+
+/* Ken Burns effect */
+@keyframes kenburns {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-1.5%, -0.5%); }
+}
 
 /* Sakura */
 @keyframes petal-fall {
