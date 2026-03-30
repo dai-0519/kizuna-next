@@ -8,7 +8,6 @@ import PageTransition from '@/components/PageTransition'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['300', '400', '600', '900'],
   style: ['normal', 'italic'],
   axes: ['WONK'],
   variable: '--font-fraunces-var',
